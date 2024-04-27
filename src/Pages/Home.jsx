@@ -3,6 +3,8 @@ import { formatPodcasts } from "../services/formatPodcasts";
 import { searchPodcasts } from "../services/searchPodcasts";
 import PodcastCard from "../Components/PodcastCard";
 
+const CACHE_KEY = "cachedPodcasts";
+
 const Home = () => {
   const [podcasts, setPodcasts] = useState([]);
   const [filteredPodcasts, setFilteredPodcasts] = useState([]);
@@ -11,14 +13,25 @@ const Home = () => {
   const renderPodcasts = searchTerm === "" ? podcasts : filteredPodcasts;
 
   useEffect(() => {
-    fetch(
-      "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setPodcasts(formatPodcasts(data));
-        setFilteredPodcasts(formatPodcasts(data));
-      });
+    const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+    if (cachedData && Date.now() - cachedData.timestamp < 24 * 60 * 60 * 1000) {
+      setPodcasts(cachedData.podcasts);
+      setFilteredPodcasts(cachedData.podcasts);
+    } else {
+      fetch(
+        "https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          const formattedPodcasts = formatPodcasts(data);
+          setPodcasts(formattedPodcasts);
+          setFilteredPodcasts(formattedPodcasts);
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ podcasts: formattedPodcasts, timestamp: Date.now() }));
+        })
+        .catch((error) => {
+          console.error("Error fetching podcasts:", error);
+        });
+    }
   }, []);
 
   const handleSearch = (event) => {
