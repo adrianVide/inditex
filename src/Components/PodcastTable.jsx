@@ -22,7 +22,7 @@ const PodcastTable = ({ episodes }) => {
                   new Date(episode.releaseDate)
                 )}
               </td>
-              <td className="pr-4 text-center">{new Date(episode.trackTimeMillis * 1000).toISOString().substr(11, 5)}</td>
+              <td className="pr-4 text-center">{!!episode.trackTimeMillis ? new Date(episode.trackTimeMillis * 1000).toISOString().substr(11, 5) : 'N/A'}</td>
             </tr>
           ))}
         </tbody>
