@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const PodcastTable = ({ episodes }) => {
-  console.log(episodes);
+const PodcastTable = ({ episodes, podcastId }) => {
 
   return (
     <div className="p-8 shadow-lg rounded-lg w-full">
@@ -16,13 +16,21 @@ const PodcastTable = ({ episodes }) => {
         <tbody>
           {episodes.slice(1).map((episode) => (
             <tr className="even:bg-gray-100 odd:bg-white h-12 border-t-2 border-grey-900">
-              <td className="pl-4">{episode.trackName}</td>
+              <td className="pl-4">
+                <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>{episode.trackName}</Link>
+              </td>
               <td>
                 {new Intl.DateTimeFormat("es-ES").format(
                   new Date(episode.releaseDate)
                 )}
               </td>
-              <td className="pr-4 text-center">{!!episode.trackTimeMillis ? new Date(episode.trackTimeMillis * 1000).toISOString().substr(11, 5) : 'N/A'}</td>
+              <td className="pr-4 text-center">
+                {!!episode.trackTimeMillis
+                  ? new Date(episode.trackTimeMillis * 1000)
+                      .toISOString()
+                      .substr(11, 5)
+                  : "N/A"}
+              </td>
             </tr>
           ))}
         </tbody>
