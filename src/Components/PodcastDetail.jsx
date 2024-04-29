@@ -9,11 +9,11 @@ const PodcastDetail = ({ image, name, author, description, podcastId }) => {
         <img src={image} alt={name} className="mb-8 w-full" />
         <Divider />
         <h1 className="text-2xl font-bold">{name}</h1>
-        <h2 className="text-lg font-semibold">by {author}</h2>
+        <h2 className="text-lg font-semibold italic">by {author}</h2>
       </Link>
       <Divider />
       <p className="text-gray-600 mt-4">Description:</p>
-      <p className="text-gray-600 mt-4">{description}</p>
+      <p className="text-gray-600 mt-4 italic">{description}</p>
     </div>
   );
 };

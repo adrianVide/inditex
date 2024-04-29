@@ -16,7 +16,7 @@ const PodcastTable = ({ episodes, podcastId }) => {
         <tbody>
           {episodes.slice(1).map((episode) => (
             <tr className="even:bg-gray-100 odd:bg-white h-12 border-t-2 border-grey-900">
-              <td className="pl-4">
+              <td className="pl-4 text-cyan-600">
                 <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>{episode.trackName}</Link>
               </td>
               <td>
