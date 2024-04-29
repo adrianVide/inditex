@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { formatPodcasts } from "../services/formatPodcasts";
 import { searchPodcasts } from "../services/searchPodcasts";
-import PodcastCard from "../Components/PodcastCard";
-import { useLoadingContext } from "../Context/LoadingContext";
+import PodcastCard from "../components/PodcastCard";
+import { useLoadingContext } from "../context/LoadingContext";
 
 const ARRAY_CACHE_KEY = "cachedPodcasts";
 const FETCH_URL =

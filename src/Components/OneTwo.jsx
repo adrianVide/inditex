@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PodcastDetail from "../Components/PodcastDetail";
+import PodcastDetail from "./PodcastDetail";
 import { Outlet } from "react-router-dom";
-import { useLoadingContext } from "../Context/LoadingContext";
+import { useLoadingContext } from "../context/LoadingContext";
 
 const ARRAY_CACHE_KEY = "cachedPodcasts";
 const PODCAST_CACHE_KEY = (podcastId) => `podcast-${podcastId}`;
@@ -70,7 +70,7 @@ const OneTwo = () => {
     return null;
   }
   return (
-    <div class="grid grid-cols-3 gap-x-32">
+    <div className="grid grid-cols-3 gap-x-32">
       <div>
         <PodcastDetail
           image={podcast.episodes[0].artworkUrl600 || podcast.image}

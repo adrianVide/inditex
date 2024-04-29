@@ -5,7 +5,7 @@ const PodcastTable = ({ episodes, podcastId }) => {
 
   return (
     <div className="p-8 shadow-lg rounded-lg w-full">
-      <table class="table-auto w-full">
+      <table className="table-auto w-full">
         <thead>
           <tr className="text-left">
             <th className="pl-4">Title</th>
@@ -15,7 +15,7 @@ const PodcastTable = ({ episodes, podcastId }) => {
         </thead>
         <tbody>
           {episodes.slice(1).map((episode) => (
-            <tr className="even:bg-gray-100 odd:bg-white h-12 border-t-2 border-grey-900">
+            <tr key={episode.trackId} className="even:bg-gray-100 odd:bg-white h-12 border-t-2 border-grey-900">
               <td className="pl-4 text-cyan-600">
                 <Link to={`/podcast/${podcastId}/episode/${episode.trackId}`}>{episode.trackName}</Link>
               </td>

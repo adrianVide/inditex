@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useLoadingContext } from "../Context/LoadingContext";
+import { useLoadingContext } from "../context/LoadingContext";
 import { Loader } from "./Loader";
 
 const Header = () => {

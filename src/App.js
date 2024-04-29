@@ -3,14 +3,14 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Home from './Pages/Home';
-import Podcast from './Pages/Podcast';
-import Episode from './Pages/Episode';
+import Home from './pages/Home';
+import Podcast from './pages/Podcast';
+import Episode from './pages/Episode';
 import './App.css';
-import Divider from "./Components/Divider";
-import OneTwo from "./Components/OneTwo";
-import LoadingProvider from "./Context/LoadingContext";
-import Header from "./Components/Header";
+import Divider from "./components/Divider";
+import OneTwo from "./components/OneTwo";
+import LoadingProvider from "./context/LoadingContext";
+import Header from "./components/Header";
 
 function App() {
 

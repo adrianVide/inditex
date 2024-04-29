@@ -1,5 +1,5 @@
-import PodcastTable from "../Components/PodcastTable";
-import PodcastEpisodesNumber from "../Components/PodcastEpisodesNumber";
+import PodcastTable from "../components/PodcastTable";
+import PodcastEpisodesNumber from "../components/PodcastEpisodesNumber";
 import { useOutletContext } from "react-router-dom";
 
 const Podcast = () => {
